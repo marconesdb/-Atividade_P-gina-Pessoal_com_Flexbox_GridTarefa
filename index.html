@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Pessoal | Marcone Silva de Brito</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Olá, eu sou Marcone Silva de Brito</h1>
+    <p>Estudante de tecnologia, curioso por programação e design.</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="index.html" aria-current="page">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="#tecnologias">Tecnologias</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/HTML" target="_blank" rel="noopener">Aprender HTML</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="apresentacao">
+      <h2>Apresentação</h2>
+      <p class="intro">
+        Meu nome é Marcone Silva de Brito, tenho 41 anos e moro em Montes Claros-MG. Atualmente estou
+        estudando Curso Técnico em Informática para Internet e dando os primeiros passos com HTML.
+        Gosto de aprender coisas novas e transformar ideias em páginas que
+        qualquer pessoa possa acessar.
+      </p>
+      <img src="img/foto.jpg" alt="Foto de perfil de Marcone Silva de Brito">
+    </section>
+
+    <section id="tecnologias">
+      <h2>Tecnologias e Interesses</h2>
+      <p class="subtitulo">Tecnologias, ferramentas e áreas que estudo e tenho interesse.</p>
+
+      <div class="cartoes">
+
+        <article class="cartao cartao-destaque cartao-azul">
+          <div class="cartao-topo">
+            <span class="cartao-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>
+            </span>
+            <h3>Desenvolvimento Web</h3>
+          </div>
+          <p>
+            Criação de sites e páginas com HTML semântico e CSS, aplicando o que aprendo no
+            Curso Técnico em Informática para Internet.
+          </p>
+          <ul class="tags">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Semântica</li>
+          </ul>
+        </article>
+
+        <article class="cartao cartao-laranja">
+          <div class="cartao-topo">
+            <span class="cartao-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="6" cy="5" r="2.5"/><circle cx="6" cy="19" r="2.5"/><circle cx="18" cy="9" r="2.5"/><path d="M6 7.5v9M18 11.5c0 4-12 2-12 5"/></svg>
+            </span>
+            <h3>Controle de Versão</h3>
+          </div>
+          <p>Versionamento de código e publicação dos meus projetos em repositórios.</p>
+          <ul class="tags">
+            <li>Git</li>
+            <li>GitHub</li>
+          </ul>
+        </article>
+
+        <article class="cartao cartao-verde">
+          <div class="cartao-topo">
+            <span class="cartao-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12"/></svg>
+            </span>
+            <h3>Layout Responsivo</h3>
+          </div>
+          <p>Organização de páginas que se adaptam a diferentes telas.</p>
+          <ul class="tags">
+            <li>Flexbox</li>
+            <li>Grid</li>
+            <li>Media queries</li>
+          </ul>
+        </article>
+
+        <article class="cartao cartao-roxo">
+          <div class="cartao-topo">
+            <span class="cartao-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/></svg>
+            </span>
+            <h3>Formulários e Acessibilidade</h3>
+          </div>
+          <p>Campos bem rotulados e páginas que qualquer pessoa consiga usar.</p>
+          <ul class="tags">
+            <li>Formulários</li>
+            <li>Acessibilidade</li>
+          </ul>
+        </article>
+
+        <article class="cartao cartao-rosa">
+          <div class="cartao-topo">
+            <span class="cartao-icone" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><polygon points="13 2 4 14 12 14 11 22 20 10 12 10"/></svg>
+            </span>
+            <h3>Próximo passo: JavaScript</h3>
+          </div>
+          <p>Meu próximo objetivo é dar vida às páginas com interatividade.</p>
+          <ul class="tags">
+            <li>JavaScript</li>
+            <li>Em estudo</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="hobbies" class="secao-destacada">
+      <h2>Hobbies e Interesses</h2>
+      <ul>
+        <li>Ler livros de ficção científica</li>
+        <li>Ouvir música enquanto estudo</li>
+        <li>Jogar videogame com amigos</li>
+        <li>Fazer caminhadas ao ar livre</li>
+      </ul>
+    </section>
+    
+
+    <section id="contato">
+      <h2>Entre em contato</h2>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Envie sua mensagem</legend>
+
+          <p>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+          </p>
+
+          <p>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
+          </p>
+
+          <p>
+            <label for="assunto">Assunto:</label>
+            <input type="text" id="assunto" name="assunto">
+          </p>
+
+          <p>
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+          </p>
+
+          <p>
+            <button type="submit">Enviar</button>
+            <button type="reset">Limpar</button>
+          </p>
+        </fieldset>
+      </form>
+    </section>
+  
+  </main>
+
+  <footer>
+    <p>
+      &copy; 2026 Marcone Silva de Brito &ndash;
+      <a href="https://github.com/marconesdb" target="_blank" rel="noopener">Meu GitHub</a>
+    </p>
+  </footer>
+
+</body>
+</html>

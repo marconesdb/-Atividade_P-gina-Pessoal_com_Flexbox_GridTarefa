@@ -1,0 +1,403 @@
+/* ==========================================================
+   Página pessoal – Marcone Silva de Brito
+   Folha de estilos externa (style.css) organizada por tópicos:
+   1. Cores  2. Fontes  3. Dimensões e espaçamentos
+   4. Bordas  5. Componentes  6. Responsividade
+   (estrutura da página com Grid; cartões com Grid + Flexbox)
+   ========================================================== */
+
+
+/* ---------- 1. CORES (variáveis reutilizáveis) ---------- */
+:root {
+  --fundo: #eef3f1;           /* fundo da página */
+  --papel: #ffffff;          /* fundo do conteúdo */
+  --texto: #1f2d2b;           /* texto principal */
+  --destaque: #2f6f66;        /* links, títulos, botões */
+  --destaque-escuro: #1f524b; /* cabeçalho e hover */
+  --suave: #d6e2de;           /* bordas e fundos discretos */
+  --borda-campo: #8aa59e;     /* contorno dos campos do formulário */
+}
+
+
+/* ---------- 2. FONTES ---------- */
+body {
+  margin: 0;
+  padding: 1.5rem 0.75rem 2.5rem;       /* espaço ao redor da "folha" */
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1.0625rem;                 /* 17px: leitura confortável */
+  line-height: 1.7;
+  color: var(--texto);
+  background: var(--fundo);
+}
+
+h1, h2, legend {
+  font-family: Georgia, "Times New Roman", serif;   /* títulos com serifa */
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: var(--destaque);
+}
+
+
+/* ---------- 3. DIMENSÕES E ESPAÇAMENTOS ---------- */
+* { box-sizing: border-box; }   /* largura inclui padding e borda */
+
+/* ESTRUTURA DA PÁGINA (Grid Layout)
+   O <body> é a grade: 2 colunas (menu lateral + conteúdo) e 3 linhas
+   (cabeçalho, miolo, rodapé). */
+body {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  grid-template-rows: auto 1fr auto;
+  max-width: 64rem;               /* largura máxima da "folha" */
+  margin: 0 auto;                 /* centraliza na tela */
+}
+
+header, nav, main, footer { padding: 1rem 1.5rem; }
+
+/* Cabeçalho e rodapé ocupam as DUAS colunas */
+header { grid-column: 1 / -1; grid-row: 1; padding-block: 2rem; }
+footer { grid-column: 1 / -1; grid-row: 3; }
+
+/* Menu na 1ª coluna e conteúdo na 2ª, ambos na linha do meio */
+nav  { grid-column: 1; grid-row: 2; }
+main { grid-column: 2; grid-row: 2; padding-block: 1.5rem; }
+
+section { margin: 2.5rem 0; }
+main section:first-child { margin-top: 0; }
+main section:last-child  { margin-bottom: 0; }
+
+
+/* ---------- 4. BORDAS E FUNDOS DAS PARTES DA PÁGINA ---------- */
+header {
+  background: var(--destaque-escuro);
+  color: var(--suave);
+  border-radius: 0.75rem 0.75rem 0 0;   /* só os cantos de cima */
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.6rem, 4.5vw, 2.25rem);  /* cresce e encolhe com a tela */
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+header p { margin: 0; font-size: 1.05rem; }
+
+nav {
+  background: var(--papel);
+  border-right: 1px solid var(--suave);   /* separa o menu lateral do conteúdo */
+}
+
+main { background: var(--papel); }
+
+footer {
+  background: var(--suave);
+  border-top: 1px solid var(--suave);
+  border-radius: 0 0 0.75rem 0.75rem;  /* só os cantos de baixo */
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+footer p { margin: 0; }
+
+h2 {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--suave);
+}
+
+
+/* ---------- 5. COMPONENTES ---------- */
+
+/* Links */
+a {
+  color: var(--destaque);
+  text-underline-offset: 0.2em;
+}
+
+a:hover { color: var(--destaque-escuro); }
+
+a:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+/* Navegação */
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;         /* menu lateral: itens empilhados */
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  display: block;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;           /* formato de "pílula" */
+  text-decoration: none;
+  font-weight: 600;
+}
+
+nav a:hover { background: var(--suave); }
+
+nav a[aria-current="page"] {      /* página em que o visitante está */
+  background: var(--destaque);
+  color: #ffffff;
+}
+
+/* Parágrafos do conteúdo principal */
+main p { margin: 0 0 1rem; }
+
+/* Classes: .intro (parágrafo de abertura) e .secao-destacada (seção com
+   fundo, borda e espaçamento próprios) */
+.intro {
+  font-size: 1.15rem;
+  color: var(--destaque-escuro);
+}
+
+.secao-destacada {
+  padding: 1.25rem 1.5rem;
+  background: var(--fundo);
+  border: 1px solid var(--suave);
+  border-left: 6px solid var(--destaque);
+  border-radius: 0.5rem;
+}
+
+.secao-destacada ul { margin-bottom: 0; }
+
+/* Foto de perfil */
+#apresentacao img {
+  display: block;
+  width: 12rem;
+  height: 12rem;                  /* largura = altura → círculo perfeito */
+  max-width: 100%;
+  object-fit: cover;              /* recorta sem deformar a foto */
+  object-position: center 25%;    /* mantém o rosto enquadrado */
+  margin-top: 1rem;
+  border: 4px solid var(--destaque);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(31, 45, 43, 0.2);
+}
+
+
+/* Seção "Tecnologias e Interesses" */
+.subtitulo {
+  margin-top: -0.25rem;
+  color: var(--destaque-escuro);
+}
+
+/* Grid: os cartões ficam em 3 colunas de mesma largura, com espaço (gap) entre eles */
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* O primeiro cartão ocupa 2 colunas */
+.cartao-destaque { grid-column: span 2; }
+
+/* Flexbox: organização interna do cartão (coluna) */
+.cartao {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--papel);
+  border: 1px solid var(--suave);
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 8px rgba(31, 45, 43, 0.08);
+  /* cores de cada cartão (sobrescritas pelas classes .cartao-azul etc.) */
+  --c-fundo: #dbeafe;
+  --c-texto: #1e3a8a;
+}
+
+/* Flexbox: ícone e título lado a lado */
+.cartao-topo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;              /* centraliza na vertical */
+  gap: 0.9rem;
+}
+
+.cartao h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.cartao p { margin: 0; font-size: 0.98rem; line-height: 1.55; }
+
+.cartao-icone {
+  display: flex;
+  flex: none;                       /* não encolhe */
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--c-fundo);
+  color: var(--c-texto);
+  border-radius: 0.75rem;
+}
+
+.cartao-icone svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Flexbox: tags lado a lado, quebrando linha quando faltar espaço */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: auto 0 0;                 /* empurra as tags para o fim do cartão */
+  padding: 0;
+  list-style: none;
+}
+
+.tags li {
+  margin: 0;
+  padding: 0.2rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--c-texto);
+  background: var(--c-fundo);
+  border-radius: 999px;
+}
+
+/* Variações de cor */
+.cartao-azul    { --c-fundo: #dbeafe; --c-texto: #1e3a8a; }
+.cartao-laranja { --c-fundo: #ffedd5; --c-texto: #9a3412; }
+.cartao-verde   { --c-fundo: #dcfce7; --c-texto: #166534; }
+.cartao-roxo    { --c-fundo: #ede9fe; --c-texto: #5b21b6; }
+.cartao-rosa    { --c-fundo: #fce7f3; --c-texto: #9d174d; }
+
+/* Listas (hobbies e objetivos) */
+section ul, section ol { padding-left: 1.5rem; }
+.cartoes ul { padding-left: 0; }
+section li { margin-bottom: 0.35rem; }
+section li::marker { color: var(--destaque); font-weight: 700; }
+
+/* Formulário */
+fieldset {
+  margin: 0;
+  padding: 1rem 1.25rem 0.5rem;
+  border: 1px solid var(--suave);
+  border-radius: 0.75rem;
+  background: var(--fundo);
+}
+
+legend {
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--destaque);
+}
+
+fieldset p { margin: 0 0 1rem; }
+
+label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  font: inherit;                  /* usa a mesma fonte do restante da página */
+  color: var(--texto);
+  background: var(--papel);
+  border: 1px solid var(--borda-campo);
+  border-radius: 0.4rem;
+}
+
+textarea { resize: vertical; min-height: 8rem; }
+
+input:focus, textarea:focus {
+  outline: 3px solid rgba(47, 111, 102, 0.35);
+  border-color: var(--destaque);
+}
+
+/* Botões */
+button {
+  padding: 0.6rem 1.5rem;
+  margin-right: 0.5rem;
+  font: inherit;
+  font-weight: 600;
+  border: 2px solid var(--destaque);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+button[type="submit"] { background: var(--destaque); color: #ffffff; }
+button[type="submit"]:hover {
+  background: var(--destaque-escuro);
+  border-color: var(--destaque-escuro);
+}
+
+button[type="reset"] { background: transparent; color: var(--destaque); }
+button[type="reset"]:hover { background: var(--suave); }
+
+button:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 6. RESPONSIVIDADE ---------- */
+
+/* Telas médias e grandes: foto ao lado do texto de apresentação */
+@media (min-width: 40rem) {
+  #apresentacao {
+    display: grid;
+    grid-template-columns: 1fr 12rem;
+    column-gap: 2rem;
+    align-items: start;
+  }
+  #apresentacao h2 { grid-column: 1 / -1; }
+  #apresentacao p  { margin-top: 0; }
+  #apresentacao img { margin-top: 0.25rem; }
+}
+
+/* Telas médias: menu vai para cima do conteúdo (grade de 1 coluna) e os
+   cartões passam para 2 colunas */
+@media (max-width: 48rem) {
+  body { grid-template-columns: minmax(0, 1fr); }
+  header, nav, main, footer { grid-column: 1; grid-row: auto; }
+
+  nav {
+    border-right: 0;
+    border-bottom: 1px solid var(--suave);
+  }
+  nav ul { flex-direction: row; flex-wrap: wrap; }
+
+  .cartoes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Telas pequenas: a folha ocupa a largura toda, sem cantos arredondados */
+@media (max-width: 30rem) {
+  body { padding: 0 0 2rem; }
+  header, footer { border-radius: 0; }
+  button { width: 100%; margin: 0 0 0.5rem; }
+
+  .cartoes { grid-template-columns: 1fr; }
+  .cartao-destaque { grid-column: auto; }
+}
+
+/* Respeita quem prefere menos animações */
+@media (prefers-reduced-motion: reduce) {
+  button { transition: none; }
+}
